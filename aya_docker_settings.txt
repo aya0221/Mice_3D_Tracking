@@ -7,37 +7,18 @@ conda env export > /home/aya/NYU_MSCS/Thesis/environment.yml
 
 [Create a Dockerfile]
 - Create a File Named Dockerfile
-        # Start from ROS Noetic base image
-        FROM ros:noetic-ros-base
-
-        # Install Miniconda
-        RUN apt-get update && apt-get install -y wget && \
-            wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /miniconda.sh && \
-            bash /miniconda.sh -b -p /miniconda && \
-            rm /miniconda.sh
-        ENV PATH /miniconda/bin:${PATH}
 
 
-
-- Build the Image:
-    sudo docker build -t my-ros-conda-image .
-
--  Run the Docker Container
+- Run the Docker Container
     sudo docker run -it -p 8888:8888 -v /home/aya/NYU_MSCS/Thesis:/workspace my-ros-conda-image
 
 
-
-- Create the Conda Environment Inside the Docker Container (Inside the Running Docker Container:)
-    conda env create -f /workspace/environment.yml
-
-
--  Activate Conda Environment
+- Activate the Conda Environment (Inside the Docker Container)
     source /miniconda/bin/activate myp
 
 
-- Running Jupyter Notebook
-    jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root
-
+- Start Jupyter Notebook
+    jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-rootss
 
 
 [error handling]
@@ -47,7 +28,8 @@ conda env export > /home/aya/NYU_MSCS/Thesis/environment.yml
 - Stop the Process:
     sudo kill [PID]
 
-
+- Remove the Docker Image
+    sudo docker rmi ce7529267e2f
 
 -  list all running Docker containers:
     sudo docker ps
