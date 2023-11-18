@@ -23,11 +23,20 @@ conda env export > /home/aya/NYU_MSCS/Thesis/environment.yml
     sudo docker build -t my-ros-conda-image .
 
 -  Run the Docker Container
-    sudo docker run -it -v /home/aya/NYU_MSCS/Thesis:/workspace my-ros-conda-image
+    sudo docker run -it -p 8888:8888 -v /home/aya/NYU_MSCS/Thesis:/workspace my-ros-conda-image
 
 
-- Create the Conda Environment Inside the Docker Container
+
+- Create the Conda Environment Inside the Docker Container (Inside the Running Docker Container:)
     conda env create -f /workspace/environment.yml
+
+
+-  Activate Conda Environment
+    source /miniconda/bin/activate myp
+
+
+- Running Jupyter Notebook
+    jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root
 
 
 
