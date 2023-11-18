@@ -1,0 +1,57 @@
+conda activate myp
+
+
+[Operating RealSense Camera]
+realsense-viewer
+
+
+[setup master and slave cameras on SDK app]
+- Set Master Camera:
+    - Select the camera you designated as the Master.
+    - Navigate to its settings and look for an option related to synchronization or inter-camera sync mode.
+    - Set this camera to Master mode (often represented as mode '1' in the settings).
+
+- Set Slave Cameras:
+    - For each of the Slave cameras, Navigate to its settings and look for an option related to synchronization or inter-camera sync mode.
+    - Set these cameras to Slave mode (often mode '2').
+    - Ensure that this setting is applied correctly to each Slave camera.
+
+- Save your configuration if required.
+
+- Check -> If their frames are aligned in time
+
+
+[check connected RealSense devices]
+rs-enumerate-devices
+
+
+[Materials Needed]
+- Four Intel RealSense Cameras (1 Master, 3 Slaves)
+- Connectors: ASSHSSH28K152
+- Housing Parts: SHR-09V-S-B
+
+    - Shielded Twisted Pair Cable
+    - RS-485/RS-422 Transceivers (for longer distances)
+    - RJ-45 Ethernet Patch Cables (for longer distances)
+
+
+[Sync Cable Preparation]
+- Cut the shielded twisted pair cable to required lengths.
+- Attach connectors to both ends of each cable.
+- Secure connectors with housing parts.
+
+
+[Connecting Cameras]
+- Designate one camera as Master.
+- Connect each Slave camera to the Master using the prepared sync cables.
+    -> (each Slave should only be connected to the Master.)
+- Ensure connections align with pin 5 (SYNC) and pin 9 (Ground).
+    -> pin 5 (SYNC) is connected to pin 5 on both the Master and Slave cameras.
+    -> pin 9 (Ground) is connected to pin 9 on both cameras.
+
+
+[How does it work]
+- The Master camera is responsible for sending the synchronization signal, and the Slave cameras will synchronize their capture based on this signal.
+
+
+[]

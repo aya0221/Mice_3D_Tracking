@@ -1,0 +1,25 @@
+Activate the Python environment: source activate env_name.
+
+Ensure firmata port permissions: sudo chmod 666 /dev/ttyACM0.
+
+Stream live video for setup: python stream_live_ir.py.
+
+Detect LED ROI automatically: python auto_LED_mask_ir.py.
+
+Record a calibration trace: python record_calib_npy.py.
+
+Check calibration trace stability: python diagnosis_calib_time.py.
+
+Adjust color and motion filtering: python generate_HSV_filter_for_calibration_npy.py.
+
+Align camera data and timestamps: python align_time_stamps.py --convert calib.
+
+Process calibration data: python convert_calib_to_trace_npy.py.
+
+Estimate arena location and rotation: python generate_transformation_matrix.py and python generate_arena_rotation_npy.py.
+
+Record actual data: python record_scene_npy_long_format_form16.py --nocad --noroi.
+
+Check timestamps (optional): python diagnosis_scene_time.py.
+
+Prepare for pre-processing: python dump_cylinder_center.py and python dump_geometry.py.
