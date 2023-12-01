@@ -1,8 +1,12 @@
 name: myp
 channels:
   - conda-forge
+  - pytorch
   - defaults
 dependencies:
+  - pytorch
+  - torchvision
+  - cudatoolkit=11.5
   - _libgcc_mutex=0.1=main
   - _openmp_mutex=5.1=1_gnu
   - abseil-cpp=20211102.0=hd4dd3e8_0
@@ -483,6 +487,7 @@ dependencies:
   - zope=1.0=py311h06a4308_1
   - zope.interface=5.4.0=py311h5eee18b_0
   - zstd=1.5.5=hc292b87_0
+  - pip
   - pip:
       - absl-py==2.0.0
       - cachetools==5.3.2
@@ -494,6 +499,7 @@ dependencies:
       - google-auth==2.23.4
       - google-auth-oauthlib==1.1.0
       - grpcio==1.59.2
+      - gnupg
       - nvidia-cublas-cu12==12.1.3.1
       - nvidia-cuda-cupti-cu12==12.1.105
       - nvidia-cuda-nvrtc-cu12==12.1.105
@@ -516,6 +522,7 @@ dependencies:
       - pyrealsense2==2.54.2.5684
       - pyro-api==0.1.2
       - pyro-ppl==1.8.6
+      - pyrosbag
       - pyserial==3.5
       - pywaffle==1.1.0
       - requests-oauthlib==1.3.1
@@ -524,4 +531,6 @@ dependencies:
       - tensorboard-data-server==0.7.2
       - torch==2.1.1
       - triton==2.1.0
+      - git+https://github.com/daavoo/pyntcloud
+      - empy
 prefix: /home/aya/anaconda3/envs/myp
