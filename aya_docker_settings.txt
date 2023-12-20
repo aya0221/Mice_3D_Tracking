@@ -1,4 +1,59 @@
 
+[WHEN RECONNECTING TO SSD]
+sudo umount /media/aya/Naomi-external/aya/
+sudo mount /dev/sdx /media/aya/Naomi-external/aya/
+----------------------
+[RESET AND RUN DOCKER]
+sudo docker stop my-ros-container
+sudo docker start my-ros-container
+sudo docker exec -it my-ros-container /bin/bash
+source /miniconda/bin/activate myp
+jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root
+----------------------
+
+
+
+
+
+----------------------
+sudo docker run -it -p 8888:8888 -v /home/aya/NYU_MSCS/Thesis:/workspace -v /media/aya/Naomi-external/aya/:/data --name my-ros-container my-ros-noetic-cv-bridge
+sudo docker start my-ros-container
+source /miniconda/bin/activate myp
+jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root
+
+
+
+
+----------------------
+sudo docker build -t my-ros-noetic-cv-bridge .
+
+sudo docker run -it -p 8888:8888 -v /home/aya/NYU_MSCS/Thesis:/workspace -v /media/aya/Naomi-external/aya/:/data --name my-ros-container my-ros-noetic-cv-bridge
+
+conda activate myp
+
+jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root
+
+
+restart:
+sudo docker start -ai my-ros-container
+
+
+
+
+
+conda activate myp
+conda env export > /home/aya/NYU_MSCS/Thesis/environment.yml
+
+sudo docker pull ros:noetic-robot
+sudo docker run -it -p 8888:8888 -v /home/aya/NYU_MSCS/Thesis:/workspace -v /media/aya/Naomi-external/aya/:/data --name ros-noetic-container my-ros-conda-image
+source /miniconda/bin/activate myp
+jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root
+
+
+
+------------------------------
+
+
 conda activate myp
 
 
@@ -18,7 +73,7 @@ conda env export > /home/aya/NYU_MSCS/Thesis/environment.yml
 
 
 - Start Jupyter Notebook
-    jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-rootss
+    jupyter notebook --ip 0.0.0.0 --port 8888 --no-browser --allow-root
 
 
 [error handling]
@@ -37,3 +92,5 @@ conda env export > /home/aya/NYU_MSCS/Thesis/environment.yml
 - Stop Docker Containers:
     sudo docker stop [container_id_or_name]
 
+- start the existing docker
+    sudo docker start my-ros-container

@@ -1,0 +1,101 @@
+
+
+To Access my Docker Container
+    sudo docker start my-ros-container
+    sudo docker exec -it my-ros-container /bin/bash
+    source /miniconda/bin/activate myp
+
+
+
+
+------------------------------------------------------------------
+
+
+
+------------------------------------------------------------------
+ROS INSTALLATION
+    this one command instllation only works on buntu Focal (20.04)
+    wget -c https://raw.githubusercontent.com/qboticslabs/ros_install_noetic/master/ros_install_noetic.sh && chmod +x ./ros_install_noetic.sh && ./ros_install_noetic.sh
+
+
+
+
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+
+sudo apt update
+
+    if previously attempted to install ros and having an error message after sudo update,
+        sudo sed -i '/packages.ros.org/d' /etc/apt/sources.list.d/ros-latest.list
+        sudo apt update
+
+sudo apt install ros-noetic-desktop-full
+
+
+source /opt/ros/noetic/setup.bash
+
+sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+
+
+sudo apt install python3-rosdep
+
+sudo rosdep init
+rosdep update
+
+
+
+------------------------------------------------------------------
+
+
+My INF
+
+CUDA compiler version is 
+    11.5
+
+ROS is @
+    /etc/ros/rosdep/sources.list.d/20-default.list
+
+CUDA
+    Cuda compilation tools, release 11.5, V11.5.119
+    Build cuda_11.5.r11.5/compiler.30672275_0
+
+
+
+------------------------------------------------------------------
+sudo find / -path /media -prune -o -type f -exec du -h {} + | sort -rh | head -n 20
+
+[CLEAR UP THE SPACE: DELETING MY OLD USER"S HOME DATA]
+Delete the old user's home directory:
+    sudo rm -rf /home/alicia
+
+Clear the old user's cached packages from apt:
+    sudo apt clean
+
+Remove the old user's Docker data:
+    sudo docker system prune -a
+
+Empty the trash:
+    rm -rf ~/.local/share/Trash/*
+
+
+Clear the user cache
+    sudo rm -rf /home/alicia/.cache/*
+
+ensure the space has been freed up:
+    df -h
+
+
+------------------------------------------------------------------
+
+Running Script in Background:
+    python3 /workspace/talker.py &
+
+check Current Jobs:
+    jobs
+
+
+------------------------------------------------------------------
+
+
+
+
+

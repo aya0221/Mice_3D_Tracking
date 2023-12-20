@@ -533,4 +533,7 @@ dependencies:
       - triton==2.1.0
       - git+https://github.com/daavoo/pyntcloud
       - empy
+      - deepposekit
+      - tensorflow
+      # - rosbags
 prefix: /home/aya/anaconda3/envs/myp
